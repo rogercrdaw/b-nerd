@@ -55,3 +55,7 @@ Y finalmente desde terminal ejecutar:
 [B-NERDS! toDevelop](https://www.b-nerd.cat)    
 [Video Pitch](https://www.b-nerd.cat/docs/files/video_pitch_hd.mp4)    
 [Video Demo](https://www.b-nerd.cat/docs/files/demo.mp4)    
+
+Para profesores.
+La documentación completa del proyecto está en [b-nerd.cat/doc](https://www.b-nerd.cat/doc)    
+Esta carpeta es sólo accesible a usuarios admin.

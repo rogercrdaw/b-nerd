@@ -40,7 +40,8 @@ Aporta o Aparta!!"_
 Se ha preparado una Demo de facil instalación.
 1. Clonar repositorio en una carpeta ejecutable desde localhost
 2. Crear una base de datos en localhost
-3. Cambiar variables de entonrno (lineas 33 y 40 del archivo *.env*)
+3. Cambiar variables de entorno (lineas 33 y 40 del archivo *.env*)
+4. Descomentar lines 9 y 10 del gitignore para no sincronizar carpetas VAR y VENDOR 
 ~~~~
 DATABASE_URL=mysql://db_user:db_password@db_server:3306/db_name?serverVersion=5.7
 MAILER_URL=smtp://smtp.MAIL-SERVER-DOMAIN:465?encryption=ssl&auth_mode=login&username=MAIL-ACCOUNT&password=MAIL-PASSWORD

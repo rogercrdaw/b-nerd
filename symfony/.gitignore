@@ -5,10 +5,10 @@
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
 
-
 ###< symfony/framework-bundle ###
-/var
-/vendor
+#/var
+#/vendor
+
 ###> symfony/phpunit-bridge ###
 .phpunit
 .phpunit.result.cache

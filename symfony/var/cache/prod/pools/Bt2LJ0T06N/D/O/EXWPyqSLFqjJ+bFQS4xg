@@ -1,0 +1,102 @@
+<?php //%255B476541eb6f78cb91a1ad2b8e24316284%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Query\\ParserResult'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ParserResult')),
+        clone ($p['Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor')),
+        clone ($p['Doctrine\\ORM\\Query\\ResultSetMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ResultSetMapping')),
+    ],
+    null,
+    [
+        'Doctrine\\ORM\\Query\\ParserResult' => [
+            '_sqlExecutor' => [
+                $o[1],
+            ],
+            '_resultSetMapping' => [
+                $o[2],
+            ],
+        ],
+        'Doctrine\\ORM\\Query\\Exec\\AbstractSqlExecutor' => [
+            '_sqlStatements' => [
+                1 => 'SELECT u0_.id AS id_0, u0_.nom AS nom_1, u0_.cognom AS cognom_2, u0_.nom_usuari AS nom_usuari_3, u0_.email AS email_4, u0_.token AS token_5, u0_.password AS password_6, u0_.roles AS roles_7, u0_.data_registre AS data_registre_8, u0_.ultim_login AS ultim_login_9, u0_.data_naixament AS data_naixament_10, u0_.imatge AS imatge_11, u0_.github AS github_12, u0_.linkedin AS linkedin_13, u0_.twitter AS twitter_14, u0_.facebook AS facebook_15, u0_.descripcio AS descripcio_16 FROM user u0_',
+            ],
+        ],
+        'stdClass' => [
+            'aliasMap' => [
+                2 => [
+                    'e' => 'App\\Entity\\User',
+                ],
+            ],
+            'fieldMappings' => [
+                2 => [
+                    'id_0' => 'id',
+                    'nom_1' => 'nom',
+                    'cognom_2' => 'cognom',
+                    'nom_usuari_3' => 'nom_usuari',
+                    'email_4' => 'email',
+                    'token_5' => 'token',
+                    'password_6' => 'password',
+                    'roles_7' => 'roles',
+                    'data_registre_8' => 'data_registre',
+                    'ultim_login_9' => 'ultim_login',
+                    'data_naixament_10' => 'data_naixament',
+                    'imatge_11' => 'imatge',
+                    'github_12' => 'github',
+                    'linkedin_13' => 'linkedin',
+                    'twitter_14' => 'twitter',
+                    'facebook_15' => 'facebook',
+                    'descripcio_16' => 'descripcio',
+                ],
+            ],
+            'entityMappings' => [
+                2 => [
+                    'e' => null,
+                ],
+            ],
+            'columnOwnerMap' => [
+                2 => [
+                    'id_0' => 'e',
+                    'nom_1' => 'e',
+                    'cognom_2' => 'e',
+                    'nom_usuari_3' => 'e',
+                    'email_4' => 'e',
+                    'token_5' => 'e',
+                    'password_6' => 'e',
+                    'roles_7' => 'e',
+                    'data_registre_8' => 'e',
+                    'ultim_login_9' => 'e',
+                    'data_naixament_10' => 'e',
+                    'imatge_11' => 'e',
+                    'github_12' => 'e',
+                    'linkedin_13' => 'e',
+                    'twitter_14' => 'e',
+                    'facebook_15' => 'e',
+                    'descripcio_16' => 'e',
+                ],
+            ],
+            'declaringClasses' => [
+                2 => [
+                    'id_0' => 'App\\Entity\\User',
+                    'nom_1' => 'App\\Entity\\User',
+                    'cognom_2' => 'App\\Entity\\User',
+                    'nom_usuari_3' => 'App\\Entity\\User',
+                    'email_4' => 'App\\Entity\\User',
+                    'token_5' => 'App\\Entity\\User',
+                    'password_6' => 'App\\Entity\\User',
+                    'roles_7' => 'App\\Entity\\User',
+                    'data_registre_8' => 'App\\Entity\\User',
+                    'ultim_login_9' => 'App\\Entity\\User',
+                    'data_naixament_10' => 'App\\Entity\\User',
+                    'imatge_11' => 'App\\Entity\\User',
+                    'github_12' => 'App\\Entity\\User',
+                    'linkedin_13' => 'App\\Entity\\User',
+                    'twitter_14' => 'App\\Entity\\User',
+                    'facebook_15' => 'App\\Entity\\User',
+                    'descripcio_16' => 'App\\Entity\\User',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

@@ -1,0 +1,23 @@
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+
+
+###< symfony/framework-bundle ###
+/var
+/vendor
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+
+### sensitive info that we must hide ###
+/public/bundles
+/public/docs
+/templates/admin
+/templates/docs
+
+

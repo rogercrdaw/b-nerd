@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	B-NERDS! Login
+{% endblock %}
+
+{% block navbar %}
+	{{ include('menu.html.twig') }}
+{% endblock %}
+
+{% block content %}
+	<section>
+		<form method="post">
+
+			<h1 class="titulo">
+				Iniciar sesión
+			</h1>
+
+			{% if tokenPendent is defined %}
+				{% if tokenPendent %}
+					<div class="form-alert-errors">Te hemos enviado un mail y estas pendiente de verificación</div>
+				{% else %}
+					<div class="alert alert-success">Grácias por registrarte. Haz login y disfruta</div>
+				{% endif %}
+			{% endif %}
+
+
+			{% if error %}
+				<div class="form-alert-errors">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
+
+			<div class="form-group">
+				<label for="inputEmail">Email</label>
+				<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+			</div>
+
+			<div class="form-group">
+				<label for="inputPassword">Password</label>
+				<input type="password" name="password" id="inputPassword" class="form-control" required>
+			</div>
+
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+			<button class="btn btn-block btn-outline-secondary" type="submit">
+				Entrar !
+			</button>
+
+		</form>
+		{# <button type="button" class="btn btn-block btn-outline-secondary" onclick="location.href='{{ path('app_register') }}'"> Registra`t
+																						</button> #}
+		<p class="text">Todavía no te has registrado? A que esperas,
+			<a href="{{ path('app_register') }}" alt="Enllaç al formulari de registre" title="Registre't">Únete al club!</a>
+		</p>
+	</section>
+{% endblock %}

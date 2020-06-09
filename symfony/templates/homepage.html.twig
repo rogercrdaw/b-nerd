@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block navbar %}
+	{{ include('menu.html.twig') }}
+{% endblock %}
+
+{% block content %}
+
+
+	{% block section_01 %}
+		{{ include('home/ca_section_1.html.twig') }}
+	{% endblock %}
+
+	{% block section_02 %}
+		{{ include('home/ca_section_2.html.twig') }}
+	{% endblock %}
+
+	{% block section_03 %}
+		{{ include('home/ca_section_3.html.twig') }}
+	{% endblock %}
+
+	{% block section_04 %}
+		{{ include('home/ca_section_4.html.twig') }}
+	{% endblock %}
+
+
+{% endblock %}

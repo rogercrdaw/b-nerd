@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="icon" href="{{ asset('img/brand/favicon.ico') }}" type="image/x-icon"/>
+		<link rel="shortcut icon" href="{{ asset('img/brand/favicon.ico') }}" type="image/x-icon"/>
+
+		{% block meta_description %}
+			<meta name="description" content="Somos Nerds! puros Nerds toDevelop! Adictos a la programación, Geeks de las TIC. Aprendimos mucho y no queremos dejar de hacerlo.">
+		{% endblock %}
+
+		{% block meta_ogg %}
+			<!-- Open Graph data -->
+			<meta property="og:title" content="Reconocelo! Si estas en las TIC, eres Nerd!"/>
+			<meta property="og:type" content="website"/>
+			<meta property="og:url" content="{{ app.request.uri }}"/>
+			<meta property="og:image" content="{{ app.request.getSchemeAndHttpHost() }}{{ asset('img/brand/logo_bnerd.png') }}"/>
+			<meta property="og:image:width" content="300"/>
+			<meta property="og:description" content="Bienvenido al mundo de los Full Stack Developers, esos tontos que para aprender a hacer una cosa tuviereon que apender muchas otras, y cuando creias que ya lo tenias, apareció otra mejor."/>
+			<meta property="og:site_name" content="B-NERDS toDEVELOP!"/>
+		{% endblock %}
+
+		<title>
+			{% block title %}
+				B-NERDS! toDevelop
+			{% endblock %}
+		</title>
+
+		{% block stylesheets %}
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+			<link href="https://fonts.googleapis.com/css2?family=Gentium+Basic:ital@0;1&family=Gupter:wght@400;500;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&display=swap" rel="stylesheet">
+
+			{% block extralinks %}{% endblock %}
+
+			<link rel="stylesheet" href="{{ asset('css/b-nerd.css') }}">
+						<link rel="stylesheet" href="{{ asset('css/b-nerd-print.css') }}" media="print">
+
+			<script src="{{ asset('js/b-nerd.js') }}"></script>
+			{% block extrastyes %}{% endblock %}
+		{% endblock %}
+	</head>
+	<body>
+		{% block body %}
+
+			<nav class="primary-menu">
+				{% block navbar %}{% endblock %}
+			</nav>
+			<main>
+				<div id="fade"></div>
+				{% block content %}{% endblock %}
+			</main>
+
+		{% endblock %}
+
+		{% block javascripts %}{% endblock %}
+	</body>
+</html></head></html>

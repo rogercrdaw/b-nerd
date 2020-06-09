@@ -33,13 +33,24 @@ Aporta o Aparta!!"_
 - PHP, Symfony5 y Doctrine para backend
 
 ### Requisitos para su intalación
-- Symfony5 y composer
-- PHP 7.X y bases de datos que admita JSON
-- ...
+- Symfony5 y Composer
+- PHP 7.4 y bases de datos que admita JSON
 
 ### Instalación
-lorem ipsum
+Se ha preparado una Demo de facil instalación.
+1. Clonar repositorio en una carpeta ejecutable desde localhost
+2. Crear una base de datos en localhost
+3. Cambiar variables de entonrno (lineas 33 y 40 del archivo *.env*)
+~~~~
+DATABASE_URL=mysql://db_user:db_password@db_server:3306/db_name?serverVersion=5.7
+MAILER_URL=smtp://smtp.MAIL-SERVER-DOMAIN:465?encryption=ssl&auth_mode=login&username=MAIL-ACCOUNT&password=MAIL-PASSWORD
+~~~~
+Y finalmente desde terminal ejecutar:
+- `php bin/console make:migrations`
+- `php bin/console doctrine:migrations:migrate`
+- `php bin/console doctrine:fixtures:load`
 
-
-
----
+### Media
+[B-NERDS! toDevelop](https://www.b-nerd.cat)    
+[Video Pitch](https://www.b-nerd.cat/docs/files/video_pitch_hd.mp4)    
+[Video Demo](https://www.b-nerd.cat/docs/files/demo.mp4)    

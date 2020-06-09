@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+
+{% block meta_description %}
+	<meta name="description" content="{{article.metadescription}}">
+{% endblock %}
+{% block meta_ogg %}
+	<!-- Open Graph data -->
+	<meta property="og:title" content="{{ article.titol }}"/>
+	<meta property="og:type" content="article"/>
+	<meta property="og:url" content="{{ app.request.uri }}"/>
+	<meta property="og:image" content="{{ app.request.getSchemeAndHttpHost() }}{{ asset('img/categories/' ~ article.categories[0].logo) }}"/>
+	<meta property="og:description" content="{{article.resum}}"/>
+	<meta property="og:image:width" content="300"/>
+	<meta property="og:site_name" content="B-NERDS toDEVELOP!"/>
+	<meta property="article:published_time" content="{{ article.dataPublicacio|date() }}"/>
+	<meta property="article:modified_time" content="{{ article.dataActualitzacio|date() }}"/>
+	<meta property="article:author" content="{{ article.autor }}"/>
+	<meta property="article:section" content="{{ article.categories[0] }}"/>
+	<meta property="article:tag" content="{{ article.metaTag }}"/>
+{% endblock %}
+
+{% block title %}
+	b-NERDS!
+	{{article.titol}}
+{% endblock %}
+
+{% block extrastyes %}
+	<link href="{{ asset('bundles/fosckeditor/plugins/codesnippet/lib/highlight/styles/rainbow.css') }}" rel="stylesheet">
+	<script src="{{ asset('bundles/fosckeditor//plugins/codesnippet/lib/highlight/highlight.pack.js') }}"></script>
+
+	{% if (categoria.color is defined) and (categoria.color is not empty) %}
+		<style>
+			nav {
+				border-color:{{categoria.color}};
+			}
+			.menu-username,
+			.active {
+				color: {{categoria.color}} !important;
+			}
+			.menu-bottom a:hover,
+			.menu-bottom i:hover {
+				color: {{categoria.color}}
+				;
+			}
+			a:hover {
+				color: {{categoria.color}}
+				;
+			}
+		</style>
+	{% endif %}
+{% endblock %}
+
+
+{% block navbar %}
+	{{ include('articles/menu_articles.html.twig') }}
+{% endblock %}
+{% block content %}
+
+	<section id="{{article.slug}}">
+		<h1 class="titulo">{{article.titol}}</h1>
+		<h4 class="article_individual_resum">{{article.resum}}</h4>
+		<div class="article_individual_content">
+			{{article.contingut|raw}}
+		</div>
+		<div>
+			{% if article.html is not null  %}
+				<a href="{{ path('inline_editor',{slugArticle:article.slug}) }}">Nerd it</a>
+			{% endif %}
+		</div>
+
+		<ul class="feedback-list">
+			<li class="feedback-icons">
+				<i class="fa fa-frown-o"></i>
+			</li>
+			<li class="feedback-icons">
+				<i class="fa fa-meh-o"></i>
+
+			</li>
+			<li class="feedback-icons">
+				<i class="fa fa-smile-o"></i>
+			</li>
+			<li class="feedback-icons">
+				<i class="fa fa-rocket"></i>
+			</li>
+		</ul>
+
+		<div>
+			{% for comment in article.comentaris %}
+				<p class="comments">
+					{% if comment.visible %}
+						{% if comment.tipus == 0 %}
+							<i class="fa fa-frown-o"></i>
+						{% elseif comment.tipus == 1 %}
+							<i class="fa fa-meh-o"></i>
+						{% elseif comment.tipus == 2 %}
+							<i class="fa fa-smile-o"></i>
+						{% elseif comment.tipus == 3 %}
+							<i class="fa fa-rocket"></i>
+						{% endif %}
+						{{comment.user.username}}
+						el
+						{{comment.dataPublicacio|date('d/m/Y')}}<br/>
+						"{{comment.text}}"
+					{% endif %}
+				</p>
+			{% endfor %}
+		</div>
+		<div id="feedback-modal">
+			<label for="comentari_text" class="feedback-info"></label>
+
+			{% if commentSucces %}
+				<p>
+					Gracias por tu comentario. En breve un moderador le hechará un vistazo
+				</p>
+			{% else %}
+				{{ form_start(feedbackForm) }}
+				{{ form_widget(feedbackForm.text) }}{{ form_widget(feedbackForm.tipus) }}
+				<p class="feedback-footer">
+					Sólo los usuarios registrados pueden añadir comentarios</p>
+				<div>
+					{% if app.user and is_granted('ROLE_VALIDATED') %}
+						<button type="submit" class="btn btn-outline-secondary">enviar</button>
+					{% else %}
+						<a href="{{path('app_login')}}" type="button" class="btn btn-block btn-outline-secondary" disabled>sólo los usuarios registrados pueden añadir comentarios</a>
+					{% endif %}
+				</div>
+				{{ form_end(feedbackForm) }}
+			{% endif %}
+		</div>
+
+	</section>
+
+
+{% endblock %}
+
+{% block javascripts %}
+	<script>
+		hljs.initHighlightingOnLoad();
+	</script>
+{% endblock %}

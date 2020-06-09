@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor VUE</title>
+    <script src="{{ asset('js/inline_editor.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/inline_editor.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/ace.js"></script>
+</head>
+<body onload="refresh()">
+<div class="inline-editor">
+    {# ALERTA!  No tabular ni afegir salts de linia dintre dels div #}
+    	
+    <h1 id="html-title" class="editor-title">HTML</h1>
+    <div id="html-editor" class="editor" rows="10" onkeyup="refresh()">{% if html is defined %}{{ html }}{% endif %}</div>
+    <h1 id="css-title" class="editor-title">CSS</h1>
+    <div id="css-editor" class="editor" rows="10" onkeyup="refresh()">{% if css is defined %}{{ css }}{% endif %}</div>
+    <h1 id="js-title" class="editor-title">JavaScript</h1>
+    <div id="js-editor" class="editor" rows="10" onkeyup="refresh()">{% if js is defined %}{{ js }}{% endif %}</div>
+    <div id="viewer-box">
+        <iframe id="viewer">
+        </iframe>
+    </div>
+</div>
+
+<script>
+    
+</script>
+
+</body>
+</html>

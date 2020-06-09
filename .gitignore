@@ -1,5 +1,5 @@
-demos\
-symfony\.htaccess
+demos/
+symfony/.htaccess
 robots.txt
 sitemap.xml
 

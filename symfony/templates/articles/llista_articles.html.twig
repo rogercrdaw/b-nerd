@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block meta_description %}
+
+	{% if categoria is defined %}
+		<meta name="description" content="Always Nerds!  Geeks to learn in constant Develoop!  Nerds to be Full Stack Developers in{{categoria.nom}}. Aqui nuestros apuntes, ejercicios y ejemplos sobre {{categoria.nom}}">
+	{% elseif autor is defined %}
+		<meta name="description" content="Always Nerds!  Geeks to learn in constant Develoop!  Nerds to Full Stack Develop in everything. Aqui los apuntes, ejercicios y ejemplos de {{autor.username}}">
+	{% endif %}
+
+{% endblock %}
+
+{% block meta_ogg %}
+	<!-- Open Graph data -->
+
+	{% if categoria is defined %}
+		<meta property="og:title" content="Articles de la categoria {{  categoria.nom }}"/>
+	{% elseif autor is defined %}
+		<meta property="og:title" content="Articles de {{  autor.username }}"/>
+	{% else %}
+		<meta property="og:title" content="Articles b-Nerd"/>
+	{% endif %}
+
+	<meta property="og:type" content="website"/>
+	<meta property="og:url" content="{{ app.request.uri }}"/>
+
+
+	{% if categoria is defined %}
+		<meta property="og:image" content="{{ app.request.getSchemeAndHttpHost() }}{{ asset('img/categories/' ~ categoria.logo) }}"/>
+	{% elseif autor is defined%}
+		<meta property="og:image" content="{{ app.request.getSchemeAndHttpHost() }}{{ asset('img/imatges_perfil/' ~ autor.imatge) }}"/>
+	{% else %}
+		<meta property="og:image" content="{{ app.request.getSchemeAndHttpHost() }}{{ asset('img/brand/logo_bnerd.png') }}"/>
+	{% endif %}
+
+	<meta property="og:image:width" content="300"/>
+
+	{% if categoria is defined %}
+		<meta property="og:description" content="Always Nerds!  Geeks to learn in constant Develoop!  Nerds to be Full Stack Developers in{{categoria.nom}}. Aqui nuestros apuntes, ejercicios y ejemplos sobre {{categoria.nom}}"/>
+	{% elseif autor is defined%}
+		<meta property="og:description" content="Always Nerds!  Geeks to learn in constant Develoop!  Nerds to Full Stack Develop in everything. Aqui los apuntes, ejercicios y ejemplos de {{autor.username}}"/>
+	{% else %}
+		<meta property="og:description" content="Always Nerds!  Geeks to learn in constant Develoop!  Nerds to Full Stack Develop in everything. Aqui compartimos apuntes, ejercicios y ejemplos"/>
+	{% endif %}
+
+	<meta property="og:site_name" content="B-NERDS toDEVELOP!"/>
+
+{% endblock %}
+{% block title %}
+	{% if categoria is defined %}
+		b-NERDS! in{{categoria.nom}}
+	{% elseif autor is defined %}
+		b-NERDS! by
+		{{autor.username}}
+	{% endif %}
+{% endblock %}
+{% block extrastyes %}
+	{% if (categoria.color is defined) and (categoria.color is not empty) %}
+		<style>
+			nav {
+				border-color: {{categoria.color}}
+				;
+			}
+			.menu-username,
+			.active {
+				color: {{categoria.color}} !important;
+			}
+			.menu-bottom a:hover,
+			.menu-bottom i:hover {
+				color: {{categoria.color}}
+				;
+			}
+			a:hover {
+				color: {{categoria.color}}
+				;
+			}
+		</style>
+	{% endif %}
+{% endblock %}
+{% block navbar %}
+	{{ include('menu.html.twig') }}
+{% endblock %}
+{% block content %}
+
+	<section>
+		<div style="padding-top:15vh">
+
+			{% for article in articles %}
+
+				<h3 class="llista-titol">
+					<a href="{{ asset("post/" ~ article.slug) }}" alt="ver artiículo {{article.titol}}" alt="Ver artículo">{{article.titol}}</a>
+				</h3>
+				<p class="llista-resum">{{article.resum}}</p>
+
+			{% endfor %}
+		</div>
+
+	</section>
+{% endblock %}

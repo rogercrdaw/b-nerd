@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	B-NERDS! Registre
+{% endblock %}
+
+
+{% block navbar %}
+	{{ include('menu.html.twig') }}
+{% endblock %}
+
+{% block content %}
+	<section>
+		<h1 class="titulo">
+			Formulario de registro de nuevo usuario
+		</h1>
+
+		{{ form_start(registrationForm) }}
+
+		{# {% if form.valid == false %} #}
+		<div class="form-alert-errors">
+			{{ form_errors(registrationForm.nom) }}
+			{{ form_errors(registrationForm.cognom) }}
+			{{ form_errors(registrationForm.email) }}
+			{{ form_errors(registrationForm.nom_usuari) }}
+			{{ form_errors(registrationForm.plainPassword) }}
+			{{ form_errors(registrationForm.agreeTerms) }}
+		</div>
+		{# {% endif %} #}
+
+
+		<div class="form-group">
+			{{ form_label(registrationForm.nom) }}
+			{{ form_widget(registrationForm.nom) }}
+			<p class="help-text"></p>
+			<p class="form-error-text"></p>
+		</div>
+		<div class="form-group">
+			{{ form_label(registrationForm.cognom) }}
+			{{ form_widget(registrationForm.cognom) }}
+			<p class="help-text"></p>
+			<p class="form-error-text"></p>
+		</div>
+
+		<div class="form-group">
+			{{ form_label(registrationForm.email) }}
+			{{ form_widget(registrationForm.email) }}
+			{{ form_help(registrationForm.email) }}
+			<p class="form-error-text"></p>
+		</div>
+		<div class="form-group">
+			{{ form_label(registrationForm.nom_usuari) }}
+			{{ form_widget(registrationForm.nom_usuari) }}
+			{{ form_help(registrationForm.nom_usuari) }}
+			<p class="form-error-text"></p>
+		</div>
+		<div class="form-group">
+			{{ form_label(registrationForm.plainPassword) }}
+			{{ form_widget(registrationForm.plainPassword) }}
+			{{ form_help(registrationForm.plainPassword) }}
+			<p class="form-error-text"></p>
+		</div>
+		<div class="form-group">
+			{{ form_label(registrationForm.pass2) }}
+			{{ form_widget(registrationForm.pass2) }}
+			{{ form_help(registrationForm.pass2) }}
+			<p class="form-error-text"></p>
+		</div>
+
+		<div class="form-group">
+			{{ form_label(registrationForm.data_naixament) }}
+			{{ form_widget(registrationForm.data_naixament) }}
+			{{ form_help(registrationForm.data_naixament) }}
+			<p class="form-error-text"></p>
+		</div>
+
+		{{ form_widget(registrationForm.agreeTerms) }}
+		<label for="{{ registrationForm.agreeTerms.vars.id }}">Acepto los
+			<a target="_blank" alt="Enlace a terminos y condiciones" href="{{ app.request.getSchemeAndHttpHost() }}/terminos/terminos.pdf">terminos y condiciones</a>
+		</label>
+		<br/>
+
+		<button class="btn btn-outline-secondary">Registro</button>
+		<button class="btn btn-outline-secondary" type="button" onclick="location.href='{{ path('homepage') }}'">Cancela</button>
+
+		{{ form_end(registrationForm) }}
+	</section>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block navbar %}
+	{{ include('menu.html.twig') }}
+{% endblock %}
+
+{% block content %}
+
+	<section id="menu_item_section_name_4">
+		<h1 class="titulo">
+			Nuevo artículo
+		</h1>
+
+		{{form_errors(formArticle.titol) }}
+		{{ form_errors(formArticle.resum) }}
+		{{ form_errors(formArticle.meta_tag) }}
+		{{ form_errors(formArticle.meta_description) }}
+		{{ form_errors(formArticle.categoria1) }}
+		{{ form_errors(formArticle.contingut) }}
+
+		{{ form_start(formArticle) }}
+		<div class="form-group">
+			{{ form_label(formArticle.titol) }}
+			{{ form_widget(formArticle.titol) }}
+			{{ form_help(formArticle.titol) }}
+			<p class="form-error-text"></p>
+		</div>
+		<div class="form-group">
+			{{ form_label(formArticle.resum) }}
+			{{ form_widget(formArticle.resum) }}
+			{{ form_help(formArticle.resum) }}
+			<p class="form-error-text"></p>
+		</div>
+		<div class="form-group">
+			{{ form_label(formArticle.meta_tag) }}
+			{{ form_widget(formArticle.meta_tag) }}
+			{{ form_help(formArticle.meta_tag) }}
+			<p class="form-error-text"></p>
+		</div>
+		<div class="form-group">
+			{{ form_label(formArticle.meta_description) }}
+			{{ form_widget(formArticle.meta_description) }}
+			{{ form_help(formArticle.meta_description) }}
+			<p class="form-error-text"></p>
+		</div>
+
+		<div class="form-group form-row" id="article_categories">
+			<p id="article_categories_help" class="form-warning-text">Si quieres añadir una nueva categoría que se ajuste mejor al contenido del artículo, guarda este borrador y desde el panel de administración añade la categoría con su logotipo, nombre, color...</p>
+			<div class="col-md-4">
+				{{ form_label(formArticle.categoria1) }}
+				{{ form_widget(formArticle.categoria1) }}
+			</div>
+			<div class="col-md-4">
+				{{ form_label(formArticle.categoria2) }}
+				{{ form_widget(formArticle.categoria2) }}
+			</div>
+			<div class="col-md-4">
+				{{ form_label(formArticle.categoria3) }}
+				{{ form_widget(formArticle.categoria3) }}
+			</div>
+
+		</div>
+		<div class="form-group" id="novaCategoria" style="display:none">
+			{{ form_label(formArticle.nova_categoria) }}
+			{{ form_widget(formArticle.nova_categoria) }}
+		</div>
+		<div class="form-group">
+			{{ form_label(formArticle.contingut) }}
+			{{ form_widget(formArticle.contingut) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(formArticle.html) }}
+			{{ form_widget(formArticle.html) }}
+		</div>
+		<div class="form-group">
+			{{ form_label(formArticle.css) }}
+			{{ form_widget(formArticle.css) }}
+		</div>
+		<div class="form-group">
+			{{ form_label(formArticle.js) }}
+			{{ form_widget(formArticle.js) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(formArticle.visible) }}
+			{{ form_widget(formArticle.visible) }}
+		</div>
+
+
+		{{ form_widget(formArticle) }}
+
+		<button id="articleSubmit" class="btn btn-outline-secondary">{{ button_label|default('guardar dades') }}</button>
+		<button class="btn btn-outline-secondary" type="button" onclick="location.href='{{ path('admin') }}'">Cancelar</button>
+
+		{{ form_end(formArticle) }}
+
+	</section>
+
+{% endblock %}
